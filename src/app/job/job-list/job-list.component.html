@@ -1,1 +1,5 @@
 <p>job-list works!</p>
+
+<div *ngFor="let job of jobs">
+    <p [innerText]="job.name"></p>
+</div>

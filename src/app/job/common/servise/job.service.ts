@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { JobModel } from '../model/job.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class JobService {
 
   constructor() { }
@@ -42,7 +40,7 @@ export class JobService {
   }
 
   remove(id: number): void {
-    let delItemIndex = this.jobs.findIndex((book) => book.id === id);
+    const delItemIndex = this.jobs.findIndex((book) => book.id === id);
     this.jobs.splice(delItemIndex, 1);
   }
 }

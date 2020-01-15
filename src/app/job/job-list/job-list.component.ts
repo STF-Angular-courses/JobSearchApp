@@ -1,20 +1,24 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { JobService } from '../common/servise/job.service';
+import { JobModel } from '../common/model/job.model';
+import { JobModule } from '../job.module';
 
 @Component({
   selector: 'app-job-list',
   templateUrl: './job-list.component.html',
   styleUrls: ['./job-list.component.css']
 })
-export class JobListComponent implements OnInit {
-  ngOnInit() {
-  }
+export class JobListComponent {
 
-  constructor(private jobService: JobService) { }
+  jobs: any;
+
+  constructor(private jobService: JobService) {
+    this.jobs = this.jobService.jobs;
+  }
 
   @Output() showJob = new EventEmitter<number>();
 
-  processBookById(id: number): void {
+  processJobById(id: number): void {
     this.showJob.emit(id);
   }
 
